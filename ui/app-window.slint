@@ -1,22 +1,28 @@
 import { Button, LineEdit, VerticalBox } from "std-widgets.slint";
 
 export component AppWindow inherits Window {
-    in-out property <int> counter: 42;
-    callback request-increase-value();
+    // in-out property <int> counter: 42;
+    // callback request-increase-value();
+    width: 200px;
+    height: 60px;
+
+    in-out property <string> search-text: "";
+    callback request-text-input(string);
     VerticalBox {
-        Text {
-            text: "Counter: \{root.counter}";
-        }
 
         LineEdit {
-          placeholder-text: "Search for Software"
+          placeholder-text: "Search for Software";
+          accepted(text) => {
+            // debug("Accepted: ", text);
+            root.request-text-input(self.text);
+          }
         }
 
-        Button {
-            text: "Increase value";
-            clicked => {
-                root.request-increase-value();
-            }
-        }
+        // Button {
+        //     text: "Increase value";
+            // clicked => {
+            //     root.request-increase-value();
+            // }
+        // }
     }
 }
