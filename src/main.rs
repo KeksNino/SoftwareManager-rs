@@ -6,6 +6,7 @@ mod rutracker;
 slint::include_modules!();
 
 fn main() -> Result<(), Box<dyn Error>> {
+    rutracker::search("test");
     let ui = AppWindow::new()?;
 
     ui.on_request_text_input(|text| {

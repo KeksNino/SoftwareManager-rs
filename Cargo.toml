@@ -5,8 +5,10 @@ edition = "2021"
 
 [dependencies]
 reqwest = "0.13.3"
+serde = "1.0.228"
+serde_json = "1.0.145"
 slint = "1.14.1"
-tokio = "1.52.1"
+tokio = { version = "1.52.1", features = ["full"] }
 
 [build-dependencies]
 slint-build = "1.14.1"
