@@ -10,7 +10,7 @@ fn main() -> Result<(), Box<dyn Error>> {
 
     ui.on_request_text_input(|text| {
         println!("User input: {}", text);
-        let response = rutracker::search(&text);
+        let _response = rutracker::search(&text);
     });
 
     ui.run()?;

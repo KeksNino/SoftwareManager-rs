@@ -1,4 +1,4 @@
-import { Button, LineEdit, VerticalBox } from "std-widgets.slint";
+import { Button, LineEdit, VerticalBox, HorizontalBox, StandardTableView } from "std-widgets.slint";
 
 export component AppWindow inherits Window {
     width: 200px;
@@ -7,13 +7,41 @@ export component AppWindow inherits Window {
     in-out property <string> search-text: "";
     callback request-text-input(string);
     VerticalBox {
+        alignment: stretch;
+        // width: 50%;
+        // height: 50%;
 
         LineEdit {
+          width: 500px;
           placeholder-text: "Search for Software";
           accepted(text) => {
             root.request-text-input(self.text);
           }
         }
 
+    HorizontalBox {
+      StandardTableView {
+        // width: 230px;
+        // height: 200px;
+
+        columns: [
+            { title: "Post Title" },
+            { title: "Author" },
+            { title: "Seeders" },
+            { title: "Leechers" },
+        ];
+        rows: [
+            [
+                { text: "Item 1" }, { text: "Item 2" },
+            ],
+            [
+                { text: "Item 1" }, { text: "Item 2" },
+            ],
+            [
+                { text: "Item 1" }, { text: "Item 2" },
+            ]
+        ];
+      }
     }
+  }
 }
