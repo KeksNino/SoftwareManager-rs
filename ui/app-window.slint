@@ -6,6 +6,9 @@ export component AppWindow inherits Window {
 
     in-out property <string> search-text: "";
     callback request-text-input(string);
+
+    in-out property <[[StandardListViewItem]]> table-data;
+    callback add-row();
     VerticalBox {
         alignment: stretch;
         // width: 50%;
@@ -20,7 +23,7 @@ export component AppWindow inherits Window {
         }
 
     HorizontalBox {
-      StandardTableView {
+      table := StandardTableView {
         // width: 230px;
         // height: 200px;
 
@@ -30,17 +33,14 @@ export component AppWindow inherits Window {
             { title: "Seeders" },
             { title: "Leechers" },
         ];
-        rows: [
-            [
-                { text: "Item 1" }, { text: "Item 2" },
-            ],
-            [
-                { text: "Item 1" }, { text: "Item 2" },
-            ],
-            [
-                { text: "Item 1" }, { text: "Item 2" },
-            ]
-        ];
+        rows: table-data;
+      }
+
+      Button {
+        text: "Add row";
+        clicked => {
+            add-row();
+        }
       }
     }
   }
